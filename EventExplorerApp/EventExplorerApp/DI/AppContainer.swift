@@ -17,19 +17,23 @@ final class AppContainer {
     let networkService: NetworkServiceProtocol
     let cacheService: CacheServiceProtocol
     let imageCacheService: ImageCacheServiceProtocol
+    let coreDataService: CoreDataServiceProtocol
     
     init(
         networkService: NetworkServiceProtocol = NetworkService(),
         cacheService: CacheServiceProtocol = CacheService(),
-        imageCacheService: ImageCacheServiceProtocol = ImageCacheService()
+        imageCacheService: ImageCacheServiceProtocol = ImageCacheService(),
+        coreDataService: CoreDataServiceProtocol = CoreDataService()
     ) {
         self.networkService = networkService
         self.cacheService = cacheService
         self.imageCacheService = imageCacheService
+        self.coreDataService = coreDataService
     }
 }
 
 extension AppContainer {
+    
     func makeEventListViewModel() -> EventListViewModel {
         EventListViewModel(
             networkService: networkService,
