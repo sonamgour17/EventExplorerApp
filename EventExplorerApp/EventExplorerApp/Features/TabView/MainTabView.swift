@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
     @StateObject private var router = AppRouter()
 
+    private let container: AppContainer
+   
+    init(container: AppContainer = .shared) {
+        self.container = container
+    }
+
     var body: some View {
+        
         TabView(selection: $router.selectedTab) {
+            
             NavigationStack {
-                EventListView()
+                
+                EventListView(
+                    viewModel: container.makeEventListViewModel()
+                )
             }
             .tabItem {
                 Label(
