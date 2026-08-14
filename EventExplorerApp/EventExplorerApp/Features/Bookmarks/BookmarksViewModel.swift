@@ -10,6 +10,7 @@ import Combine
 
 @MainActor
 final class BookmarksViewModel: ObservableObject {
+    
     @Published private(set) var bookmarkedEvents: [Event] = []
 
     private let coreDataService: CoreDataServiceProtocol
