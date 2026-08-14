@@ -40,4 +40,8 @@ extension AppContainer {
             cacheService: cacheService
         )
     }
+    
+    func makeBookmarksViewModel() -> BookmarksViewModel {
+            BookmarksViewModel(coreDataService: coreDataService)
+        }
 }

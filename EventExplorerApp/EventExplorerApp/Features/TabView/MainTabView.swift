@@ -36,7 +36,7 @@ struct MainTabView: View {
             .tag(AppTab.events)
 
             NavigationStack {
-                BookmarksView()
+                BookmarksView(viewModel: container.makeBookmarksViewModel()) 
             }
             .tabItem {
                 Label(

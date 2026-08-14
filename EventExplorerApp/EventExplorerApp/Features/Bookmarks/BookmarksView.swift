@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct BookmarksView: View {
+    @StateObject private var viewModel: BookmarksViewModel
+
+    init(viewModel: BookmarksViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Group {
+            if viewModel.bookmarkedEvents.isEmpty {
+                emptyState
+            } else {
+                List(viewModel.bookmarkedEvents) { event in
+                    EventRowView(event: event)
+                }
+                .listStyle(.plain)
+            }
+        }
+        .navigationTitle("Bookmarks")
+        .onAppear {
+            viewModel.loadBookmarks()
+        }
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "bookmark.slash")
+                .font(.largeTitle)
+                .foregroundColor(.secondary)
+            Text("No bookmarks yet")
+                .foregroundColor(.secondary)
+        }
     }
 }
 
-#Preview {
-    BookmarksView()
-}
+//#Preview {
+//    BookmarksView()
+//}
