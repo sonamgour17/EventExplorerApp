@@ -23,7 +23,7 @@ enum AppConstants {
         static let networkError = "wifi.exclamationmark"
     }
     
-    enum Message {
+    nonisolated enum Message {
         static let loadingEvents = "Loading events..."
         static let somethingWentWrong = "Something went wrong."
         static let invalidURL = "Invalid request URL."
