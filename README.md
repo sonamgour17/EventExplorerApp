@@ -1,4 +1,4 @@
-<img width="299" height="600" alt="Screenshot 2026-08-14 at 4 59 46 PM" src="https://github.com/user-attachments/assets/5f41c2ed-5b2c-44f7-a4ab-b3e32ac12349" />
+
 # EventExplorerApp
 
 A native iOS app that shows nearby events, lets users view event details, and save events as bookmarks.
@@ -58,8 +58,7 @@ Note: could not add a diagram here due to time shortage. In short: the ViewModel
 
 ## Project Structure
 
-<img width="299" height="600" alt="FolderStructure" src="https://github.com/user-attachments/assets/bd0b2a7d-6343-49d5-b755-af10e0b5fa3b" />
-
+<img width="299" height="600" alt="Screenshot 2026-08-14 at 4 59 46 PM" src="https://github.com/user-attachments/assets/5f41c2ed-5b2c-44f7-a4ab-b3e32ac12349" />
 
 ## Engineering Standards
 
