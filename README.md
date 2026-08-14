@@ -100,3 +100,7 @@ No API keys or setup needed.
 - CLGeocoder for location name → coordinates, since the API returns a city name, not coordinates.
 - No background refresh in this version — deprioritized in favor of solid caching, offline support, and tests.
 
+## Demo Video
+
+Watch the demo video - https://drive.google.com/file/d/1dKFFT23AJL4L1VdHLX2i3XQnNqEPQVMM/view?usp=drive_link
+
