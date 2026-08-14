@@ -54,4 +54,9 @@ enum AppConstants {
         static let cornerRadius: CGFloat = 8
         static let verticalPadding: CGFloat = 4
     }
+    
+    enum Cache {
+        static let eventTTL: TimeInterval = 300
+        static let maximumImages = 50
+    }
 }
