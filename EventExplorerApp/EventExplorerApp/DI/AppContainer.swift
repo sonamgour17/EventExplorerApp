@@ -18,19 +18,24 @@ final class AppContainer {
     let cacheService: CacheServiceProtocol
     let imageCacheService: ImageCacheServiceProtocol
     let coreDataService: CoreDataServiceProtocol
+    let locationService: LocationServiceProtocol
+
     
     init(
         networkService: NetworkServiceProtocol = NetworkService(),
         cacheService: CacheServiceProtocol = CacheService(),
         imageCacheService: ImageCacheServiceProtocol = ImageCacheService(),
-        coreDataService: CoreDataServiceProtocol = CoreDataService()
+        coreDataService: CoreDataServiceProtocol = CoreDataService(),
+        locationService: LocationServiceProtocol? = nil
     ) {
         self.networkService = networkService
         self.cacheService = cacheService
         self.imageCacheService = imageCacheService
         self.coreDataService = coreDataService
+        self.locationService = locationService ?? LocationService()
+        }
     }
-}
+
 
 extension AppContainer {
     
