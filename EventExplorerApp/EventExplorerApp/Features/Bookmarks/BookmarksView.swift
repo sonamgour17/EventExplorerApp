@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct BookmarksView: View {
+    
     @StateObject private var viewModel: BookmarksViewModel
-
+    @EnvironmentObject private var router: AppRouter
+    
     init(viewModel: BookmarksViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
         Group {
             if viewModel.bookmarkedEvents.isEmpty {
@@ -21,8 +23,11 @@ struct BookmarksView: View {
             } else {
                 List(viewModel.bookmarkedEvents) { event in
                     EventRowView(event: event)
-                }
-                .listStyle(.plain)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            router.push(.eventDetail(eventID: event.id))
+                        }
+                }.listStyle(.plain)
             }
         }
         .navigationTitle("Bookmarks")
@@ -30,7 +35,7 @@ struct BookmarksView: View {
             viewModel.loadBookmarks()
         }
     }
-
+    
     private var emptyState: some View {
         VStack(spacing: 12) {
             Image(systemName: "bookmark.slash")
@@ -42,6 +47,3 @@ struct BookmarksView: View {
     }
 }
 
-//#Preview {
-//    BookmarksView()
-//}

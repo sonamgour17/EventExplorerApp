@@ -10,11 +10,12 @@ import SwiftUI
 struct EventListView: View {
     
     @StateObject private var viewModel: EventListViewModel
-
+    @EnvironmentObject private var router: AppRouter
+    
     init(viewModel: EventListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
         content
             .navigationTitle("Events")
@@ -22,22 +23,28 @@ struct EventListView: View {
                 await viewModel.loadEvents()
             }
     }
-
+    
     @ViewBuilder
     private var content: some View {
         switch viewModel.state {
         case .loading:
             ProgressView("Loading events...")
         case .loaded(let events):
-            List(events) { EventRowView(event: $0) }
-                .listStyle(.plain)
+            List(events) { event in
+                EventRowView(event: event)
+                    .contentShape(Rectangle())
+                    .onTapGesture {                  
+                        router.push(.eventDetail(eventID: event.id))
+                    }
+            }
+            .listStyle(.plain)
         case .empty:
             emptyView
         case .error(let apiError):
             errorView(apiError.errorDescription ?? "Something went wrong.")
         }
     }
-
+    
     private var emptyView: some View {
         VStack(spacing: 12) {
             Image(systemName: "calendar.badge.exclamationmark")
@@ -48,7 +55,7 @@ struct EventListView: View {
         }
         .padding()
     }
-
+    
     private func errorView(_ message: String) -> some View {
         VStack(spacing: 12) {
             Image(systemName: "wifi.exclamationmark")
