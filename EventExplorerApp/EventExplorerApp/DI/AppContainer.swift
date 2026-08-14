@@ -19,7 +19,7 @@ final class AppContainer {
     let imageCacheService: ImageCacheServiceProtocol
     let coreDataService: CoreDataServiceProtocol
     let locationService: LocationServiceProtocol
-
+    
     
     init(
         networkService: NetworkServiceProtocol = NetworkService(),
@@ -33,8 +33,8 @@ final class AppContainer {
         self.imageCacheService = imageCacheService
         self.coreDataService = coreDataService
         self.locationService = locationService ?? LocationService()
-        }
     }
+}
 
 
 extension AppContainer {
@@ -47,6 +47,15 @@ extension AppContainer {
     }
     
     func makeBookmarksViewModel() -> BookmarksViewModel {
-            BookmarksViewModel(coreDataService: coreDataService)
-        }
+        BookmarksViewModel(coreDataService: coreDataService)
+    }
+    
+    func makeEventDetailViewModel(eventID: String) -> EventDetailViewModel {
+        EventDetailViewModel(
+            eventID: eventID,
+            cacheService: cacheService,
+            coreDataService: coreDataService,
+            locationService: locationService
+        )
+    }
 }
